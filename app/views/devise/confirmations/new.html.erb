@@ -1,16 +1,27 @@
-<h2>Resend confirmation instructions</h2>
+<section class="bg-gray-100">
+  <div class="section-container">
+    <div class="max-w-xl mx-auto">
+<h2 class="text-center section-title font-bold">
+  Resend confirmation instructions
+</h2>
+      <div class="mt-8 bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+        <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), data: {turbo: false}, html: { method: :post }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
 
-<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+          <div class="space-y-1">
+            <%= f.label :email, "Email address", class: "block text-sm font-medium text-gray-700" %>
+            <%= f.email_field :email, class: "input"  %>
+          </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+        <div class="mt-5 mb-8">
+          <%= f.submit "Resend confirmation instructions", class: "btn-primary" %>
+        </div>
+        <% end %>
+        <div class="flex justify-between">
+          <%= render "devise/shared/links" %>
+        </div>
+
+      </div>
+    </div>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Resend confirmation instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</section>

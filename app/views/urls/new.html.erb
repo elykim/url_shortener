@@ -1,0 +1,18 @@
+<h1>Create a Short URL</h1>
+<%= render 'shared/error_messages', object: @url %>
+
+<%= form_for @url do |f| %>
+  <div class="field">
+    <%= f.label :original_url %>
+    <%= f.text_field :original_url %>
+  </div>
+
+  <div class="field">
+    <%= f.label :short_url %>
+    <%= f.text_field :short_url %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Shorten the URl" %>
+  </div>
+<% end %>

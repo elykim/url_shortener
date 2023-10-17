@@ -1,0 +1,18 @@
+<h1>URL Click Statistics</h1>
+<p>Original URL: <%= @url.original_url %></p>
+
+<h2>Clicks</h2>
+<table>
+  <thead>
+  <tr>
+    <th>Click Time</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @clicks.each do |click| %>
+    <tr>
+      <td><%= click.created_at %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
