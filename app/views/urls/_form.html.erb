@@ -1,0 +1,21 @@
+<h1>Create a Short URL</h1>
+<%= form_with model: [@url] do |form| %>
+  <div class="grid sm:grid-cols-2 gap-4">
+    <div class="space-y-2">
+      <%= form.label :original_url %>
+      <%= form.text_field :original_url %>
+    </div>
+    <div class="space-y-2">
+      <%= form.label :slug %>
+      <%= form.text_field :slug %>
+    </div>
+
+    <div class="sm:col-span-2">
+      <%= form.submit "Save" %>
+    </div>
+
+    <%=  %>
+
+  </div>
+
+<% end %>

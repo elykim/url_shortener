@@ -1,13 +1,28 @@
 class Url < ApplicationRecord
-  before_create :generate_short_url
   belongs_to :user
-  has_many :clicks
   validates :original_url, presence: true
-  validates :short_url, presence: true, uniqueness: true
+  validates :slug, presence: true, uniqueness: true
 
-  scope :expired, -> { where('expiration_date < ?', Time.now) }
+  scope :expired, -> { where('expires_at < ?', Time.now) }
 
-  def generate_short_url
-    self.short_url = SecureRandom.urlsafe_base64(6)
+
+  def to_param
+    slug
   end
+
+  def shortened_url
+    Rails.application.routes.url_helpers.url_for(:action => 'show', :controller => 'urls', :host => get_host, slug: self.slug)
+  end
+
+
+  private
+
+  def get_host
+    if Rails.env.production?
+      "https://#{ENV['HOST']}"
+    else
+      'http://localhost:3000'
+    end
+  end
+
 end

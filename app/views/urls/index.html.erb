@@ -1,2 +1,25 @@
 <h1>Here is a list of all the URLs:</h1>
-<%= @urls %>
+<table>
+  <thead>
+    <tr>
+      <th>URL</th>
+      <th>Shortened URL</th>
+      <th>Clicks</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <% @urls.each do |url| %>
+      <tr>
+        <td><%= url.original_url %></td>
+        <td><a href="<%= url.shortened_url %>" target="_blank"><%= url.shortened_url %></a></td>
+        <td><%= url.clicks %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<%=  link_to 'Log Out', destroy_user_session_path, method: :delete %>
+
