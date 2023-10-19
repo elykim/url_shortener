@@ -21,8 +21,10 @@ class Url < ApplicationRecord
     if Rails.env.production?
       "https://#{ENV['HOST']}"
     else
-      'http://localhost:3000'
+      port = ENV.fetch("PORT") { 3000 }
+      "http://localhost:#{port}"
     end
+
   end
 
 end

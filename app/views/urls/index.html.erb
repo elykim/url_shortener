@@ -1,25 +1,39 @@
-<h1>Here is a list of all the URLs:</h1>
-<table>
-  <thead>
-    <tr>
-      <th>URL</th>
-      <th>Shortened URL</th>
-      <th>Clicks</th>
+<section class="bg-gray-100">
 
-    </tr>
-  </thead>
-  <tbody>
-    <% @urls.each do |url| %>
-      <tr>
-        <td><%= url.original_url %></td>
-        <td><a href="<%= url.shortened_url %>" target="_blank"><%= url.shortened_url %></a></td>
-        <td><%= url.clicks %></td>
+  <div class="px-4 sm:px-6 lg:px-8">
+    <div class="sm:flex sm:items-center mt-8">
+      <div class="sm:flex-auto">
+        <h1 class="text-base font-semibold leading-6 text-gray-900">Your URLS are here</h1>
+      </div>
+      <div class="flex items-center gap-4 mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
+        <%= link_to "Add URL", new_url_path, class: "block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
+        <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
+      </div>
+    </div>
+    <div class="mt-8 flow-root">
+      <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+          <table class="min-w-full divide-y divide-gray-300">
+            <thead>
+            <tr>
+              <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Your original URL</th>
+              <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Shortened URL</th>
+              <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">CLicks</th>
+            </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+            <% @urls.each do |url| %>
+            <tr>
+                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0"><%= url.original_url %></td>
+                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><a href="<%= url.shortened_url %>" target="_blank"><%= url.shortened_url %></a></td>
+                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= url.clicks %></td>
+            </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-
-<%=  link_to 'Log Out', destroy_user_session_path, method: :delete %>
-
+</section>

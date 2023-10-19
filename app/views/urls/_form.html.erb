@@ -1,21 +1,31 @@
-<h1>Create a Short URL</h1>
-<%= form_with model: [@url] do |form| %>
-  <div class="grid sm:grid-cols-2 gap-4">
-    <div class="space-y-2">
-      <%= form.label :original_url %>
-      <%= form.text_field :original_url %>
-    </div>
-    <div class="space-y-2">
-      <%= form.label :slug %>
-      <%= form.text_field :slug %>
-    </div>
 
-    <div class="sm:col-span-2">
-      <%= form.submit "Save" %>
+<section class="bg-gray-100">
+  <div class="max-w-3xl lg:max-w-5xl xl:max-w-6xl 2xl:max-w-7xl mx-auto px-5 sm:px-0 py-16">
+    <div class="max-w-xl mx-auto">
+      <h2 class="text-center font-bold mt-8">Create a short URL</h2>
+      <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-lg">
+        <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+          <%= form_with model: [@url] do |form| %>
+
+            <div class="space-y-1">
+              <%= form.label "Original_url", class: "block text-sm font-medium leading-6 text-gray-900" %>
+              <%= form.text_field :original_url, class: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"%>
+            </div>
+
+            <div class="space-y-1">
+              <%= form.label "slug", class: "block text-sm font-medium leading-6 text-gray-900" %>
+              <%= form.text_field :slug, class: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"%>
+            </div>
+
+            <div class="flex justify-between mt-5">
+              <%= form.submit "Save", class: "rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
+              <%= link_to "View URLs", root_path, class: "block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
+            </div>
+
+            </div>
+            </div>
+            <% end %>
     </div>
-
-    <%=  %>
-
   </div>
+</section>
 
-<% end %>
