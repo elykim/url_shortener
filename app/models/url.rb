@@ -19,7 +19,7 @@ class Url < ApplicationRecord
 
   def get_host
     if Rails.env.production?
-      "https://#{ENV['HOST']}"
+      "https://rails-uvl1.onrender.com/"
     else
       port = ENV.fetch("PORT") { 3000 }
       "http://localhost:#{port}"
